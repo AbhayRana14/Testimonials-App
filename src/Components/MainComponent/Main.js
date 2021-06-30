@@ -8,6 +8,7 @@ const Main = () => {
   const [users, setUsers] = useState([0]);
   const [displayUser, setDisplayUser] = useState([0]);
   let sIndex = useRef(1);
+  //Fetching the data from provide API
   const getUsers = async () => {
     try {
       const response = await fetch("https://testimonialapi.toolcarton.com/api");
@@ -17,18 +18,21 @@ const Main = () => {
     }
   };
   const getInfo = (id) => {
+    //Adding animation to the info container
     const content = document.querySelector(".content");
     content.style.transform = "translateX(120%)";
     content.style.transition = ".5s";
     setTimeout(() => {
       content.style.transform = "translateX(0)";
     }, 500);
+    // Fetching data to display in information container
     let data = users.filter((curr) => {
       return curr.id === id;
     });
     setDisplayUser(data);
   };
 
+  //Functionality give to the button clicks -> next and previous buttons
   const nextSlide = () => {
     if (sIndex.current === users.length) {
       sIndex.current = 1;
@@ -45,7 +49,7 @@ const Main = () => {
     }
     getInfo(sIndex.current);
   };
-
+  //Setting up default information container content to object in which id = 1
   useEffect(() => {
     setDisplayUser(
       users.filter((curr) => {
@@ -54,6 +58,7 @@ const Main = () => {
     );
   }, [users]);
 
+  //fetxhing the data on first render only
   useEffect(() => {
     getUsers();
   }, []);
