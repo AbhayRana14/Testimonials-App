@@ -17,3 +17,19 @@ img {
 .img-border {
   border: 5px solid var(--hoverblue);
 }
+@media only screen and (max-width: 414px) {
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 3px;
+  }
+}
+@media only screen and (max-width: 375px) {
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 3px;
+  }
+}
