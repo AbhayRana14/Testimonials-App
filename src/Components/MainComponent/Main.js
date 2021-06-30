@@ -70,6 +70,7 @@ const Main = () => {
         {displayUser.map((currElem, index) => {
           return (
             <div className="info-container" key={index}>
+              <p><strong>TESTIMONIALS</strong></p>
               <ContentComponent currElem={currElem} />
               <div className="slide-container">
                 <ImageContainer
